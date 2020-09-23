@@ -5,7 +5,6 @@ import 'package:carousel_pro/carousel_pro.dart';
 import 'package:shopapp_tut/components/horizontal_listview.dart';
 import 'package:shopapp_tut/components/Products.dart';
 import 'package:shopapp_tut/layout/customappbar.dart';
-import 'package:shopapp_tut/pages/cart.dart';
 
 void main(List<String> args) {
   runApp(MaterialApp(
@@ -45,30 +44,27 @@ class _HomePageState extends State<HomePage> {
     );
 
     return Scaffold(
-      appBar: new AppBar(
-        elevation: 0.0,
-        backgroundColor: Colors.red,
-        // centerTitle: true,
-        title: Text('gabriel'),
-        actions: [
-          IconButton(
-              icon: Icon(
-                Icons.search,
-                color: Colors.white,
-              ),
-              onPressed: () {}),
-          IconButton(
-              icon: Icon(
-                Icons.shopping_cart,
-                color: Colors.white,
-              ),
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => new Cart()));
-              })
-        ],
-      ),
-      // appBar: CustomAppBar(),
+      // appBar: new AppBar(
+      //   elevation: 0.0,
+      //   backgroundColor: Colors.red,
+      //   // centerTitle: true,
+      //   title: Text('FashApp'),
+      //   actions: [
+      //     IconButton(
+      //         icon: Icon(
+      //           Icons.search,
+      //           color: Colors.white,
+      //         ),
+      //         onPressed: () {}),
+      //     IconButton(
+      //         icon: Icon(
+      //           Icons.shopping_cart,
+      //           color: Colors.white,
+      //         ),
+      //         onPressed: () {})
+      //   ],
+      // ),
+      appBar: CustomAppBar(),
 
       drawer: Drawer(
         child: ListView(
@@ -123,10 +119,7 @@ class _HomePageState extends State<HomePage> {
             ),
 
             InkWell(
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => new Cart()));
-              },
+              onTap: () {},
               child: ListTile(
                 title: Text('Shopping Cart'),
                 leading: Icon(
@@ -170,29 +163,29 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      body: Column(
+      body: ListView(
         children: [
           //image crousel begins here
           image_carousel,
           // Padding widget
           Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(
-                alignment: Alignment.centerLeft, child: Text('Categories')),
+            padding: const EdgeInsets.all(6.0),
+            child: Text('Categories'),
           ),
 
           //Horizontal list view begins here
           HorizontalList(),
           Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(
-                alignment: Alignment.centerLeft,
-                child: Text('Recent products')),
+            padding: const EdgeInsets.all(6.0),
+            child: Text('Recent products'),
           ),
 
           //grid view
-
-          Flexible(child: Products()),
+          Container(
+            // height: 320.0,
+            height: 270.0,
+            child: Products(),
+          )
         ],
       ),
     );
